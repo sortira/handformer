@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Handformer Demo</title>
+<title>Forgeformer Demo</title>
 
 <style>
   :root {
@@ -715,12 +715,11 @@
   <!-- Header -->
   <header>
     <div class="header-tag">// transformer internals — brain inspector</div>
-    <h1>Hand<span>former</span> Adder</h1>
-    <p class="subtitle">A minimal transformer that adds two-digit numbers. Watch every matrix, attention weight, and activation in real time.</p>
+    <h1>Forge<span>former</span> Adder</h1>
+    <p class="subtitle">A minimal transformer that adds two-digit numbers. Watch every matrix, attention weight, and activation in real time. Built by <b>aritro shome</b></p>
     <div class="header-links">
-      <a class="header-link" href="#" title="coming soon"><span class="link-label">blog</span>read the writeup &rarr;</a>
-      <a class="header-link" href="#" title="coming soon"><span class="link-label">video</span>watch the walkthrough &rarr;</a>
-      <a class="header-link" href="#" title="coming soon"><span class="link-label">site</span>aritro shome &rarr;</a>
+      <a class="header-link" href="https://silicognition.is-a.dev/post2.html"><span class="link-label">blog</span>read the writeup &rarr;</a>
+      <a class="header-link" href="https://aritro.is-a.dev/"><span class="link-label">site</span>aritro shome &rarr;</a>
     </div>
   </header>
 
@@ -807,37 +806,48 @@
       <div class="stage-body" id="body-4"></div>
     </div>
 
-    <!-- Stage 5: Layer 2 Q K V -->
+    <!-- Stage 5: Layer 2 Weights -->
     <div class="stage-card" id="card-5">
       <div class="stage-header" onclick="toggleCard('card-5')">
         <div class="stage-num blue">5</div>
-        <div class="stage-title">Layer 2 — Q, K, V Projections</div>
-        <div class="stage-desc">X₂·W<sub>Q2</sub>, X₂·W<sub>K2</sub>, X₂·W<sub>V2</sub></div>
+        <div class="stage-title">Layer 2 — Weight Matrices</div>
+        <div class="stage-desc">W<sub>Q2</sub>, W<sub>K2</sub>, W<sub>V2</sub> (tens place extractor)</div>
         <div class="chevron">›</div>
       </div>
       <div class="stage-body" id="body-5"></div>
     </div>
 
-    <!-- Stage 6: Layer 2 Attention -->
+    <!-- Stage 6: Layer 2 Q K V -->
     <div class="stage-card" id="card-6">
       <div class="stage-header" onclick="toggleCard('card-6')">
         <div class="stage-num blue">6</div>
-        <div class="stage-title">Layer 2 — Attention Scores &amp; Weights</div>
-        <div class="stage-desc">QK<sup>T</sup> → softmax → tens-place pattern</div>
+        <div class="stage-title">Layer 2 — Q, K, V Projections</div>
+        <div class="stage-desc">X₂·W<sub>Q2</sub>, X₂·W<sub>K2</sub>, X₂·W<sub>V2</sub></div>
         <div class="chevron">›</div>
       </div>
       <div class="stage-body" id="body-6"></div>
     </div>
 
-    <!-- Stage 7: Final Output -->
+    <!-- Stage 7: Layer 2 Attention -->
     <div class="stage-card" id="card-7">
       <div class="stage-header" onclick="toggleCard('card-7')">
-        <div class="stage-num green">7</div>
+        <div class="stage-num blue">7</div>
+        <div class="stage-title">Layer 2 — Attention Scores &amp; Weights</div>
+        <div class="stage-desc">QK<sup>T</sup> → softmax → tens-place pattern</div>
+        <div class="chevron">›</div>
+      </div>
+      <div class="stage-body" id="body-7"></div>
+    </div>
+
+    <!-- Stage 8: Final Output -->
+    <div class="stage-card" id="card-8">
+      <div class="stage-header" onclick="toggleCard('card-8')">
+        <div class="stage-num green">8</div>
         <div class="stage-title">Readout — Final Output &amp; Carry Logic</div>
         <div class="stage-desc">EOS token → units + tens + carry → answer</div>
         <div class="chevron">›</div>
       </div>
-      <div class="stage-body" id="body-7"></div>
+      <div class="stage-body" id="body-8"></div>
     </div>
 
   </div>
@@ -1114,7 +1124,7 @@ function run() {
   const wRowLabels = ['d₀','d₁','d₂'];
   document.getElementById('body-1').innerHTML = `
     <div class="explain">
-      <strong>These weights were hand-crafted</strong> (hence "Handformer"). W<sub>Q1</sub> and W<sub>K1</sub>
+      <strong>These weights were forged by hand, no gpus</strong> (hence "forgeformer"). W<sub>Q1</sub> and W<sub>K1</sub>
       isolate dim[2] (the position sign) and make tokens with opposite signs attend to each other —
       units to units, tens to tens — via the dot product. W<sub>V1</sub> reads dim[1] (digit value) and
       writes it into dim[0].
@@ -1173,8 +1183,23 @@ function run() {
     </div>
   `;
 
-  // ── Stage 5: Q K V layer 2
+  // ── Stage 5: Layer 2 Weight Matrices
   document.getElementById('body-5').innerHTML = `
+    <div class="explain">
+      <strong>Layer 2 weights</strong> are also hand-crafted. Unlike Layer 1, W<sub>Q2</sub> and W<sub>K2</sub>
+      both have <strong>+10</strong> on dim[2] — so tokens with the <em>same</em> sign attend to each other
+      (tens to tens, units to units). W<sub>V2</sub> reads dim[1] (digit value) and writes into dim[1],
+      accumulating the tens-place sum into EOS.
+    </div>
+    <div class="matrix-grid" style="margin-top:16px">
+      ${renderMatrix(WQ2, wRowLabels, dimCols, 'W<sub>Q2</sub>', 'Query weights (Layer 2)')}
+      ${renderMatrix(WK2, wRowLabels, dimCols, 'W<sub>K2</sub>', 'Key weights (Layer 2)')}
+      ${renderMatrix(WV2, wRowLabels, dimCols, 'W<sub>V2</sub>', 'Value weights (Layer 2)')}
+    </div>
+  `;
+
+  // ── Stage 6: Q K V layer 2
+  document.getElementById('body-6').innerHTML = `
     <div class="explain">
       Layer 2 uses W<sub>Q2</sub> and W<sub>K2</sub> which both have +10 on dim[2]. This means tokens
       with the <em>same sign</em> in dim[2] now attend to each other — tens_A to tens_B, units_A to units_B.
@@ -1187,8 +1212,8 @@ function run() {
     </div>
   `;
 
-  // ── Stage 6: Attention Layer 2
-  document.getElementById('body-6').innerHTML = `
+  // ── Stage 7: Attention Layer 2
+  document.getElementById('body-7').innerHTML = `
     <div class="explain">
       Now the attention pattern is different: <strong>same-sign tokens attend to each other</strong>.
       Tens digits find tens digits; units digits find units digits. EOS with dim[2]=+1 attends to
@@ -1200,10 +1225,10 @@ function run() {
     ${renderAttentionGrid(s.Attn2, 'Attention weights after softmax — Layer 2')}
   `;
 
-  // ── Stage 7: Readout
+  // ── Stage 8: Readout
   const unitsRaw = s.units_sum_raw;
   const tensRaw  = s.tens_sum_raw;
-  document.getElementById('body-7').innerHTML = `
+  document.getElementById('body-8').innerHTML = `
     <div class="explain">
       Only the <strong>EOS token</strong> row is read at the end — it has aggregated information from
       all other tokens through the two attention layers. dim[0] holds the units sum, dim[1] holds the
