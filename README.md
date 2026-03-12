@@ -4,6 +4,10 @@ a minimal, weights-forged-by-hand transformer that adds two two-digit numbers �
 
 © aritro 'sortira' shome · [twitter](https://x.com/silicognition)
 
+try out the demo to look inside the brain of the model [here](https://aritro.is-a.dev/forgeformer)
+
+read the detailed blog post (docs basically) [here](https://silicognition.is-a.dev/post2.html)
+
 ---
 
 ## overview
