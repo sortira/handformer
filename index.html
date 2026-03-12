@@ -101,6 +101,81 @@
     max-width: 600px;
   }
 
+  .header-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  .header-link {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-bright);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .header-link:hover {
+    color: var(--green);
+    border-color: var(--green);
+  }
+
+  .header-link .link-label {
+    color: var(--text-dimmer);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-right: 5px;
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    margin-top: 64px;
+    padding: 28px 0 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-name {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-name strong { color: var(--text); }
+
+  .footer-socials {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .footer-social-link {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .footer-social-link:hover { color: var(--green); }
+
+  .footer-social-icon {
+    font-size: 13px;
+    color: var(--text-dimmer);
+  }
+
   /* ── Input Panel ── */
   .input-panel {
     background: var(--surface);
@@ -642,6 +717,11 @@
     <div class="header-tag">// transformer internals — brain inspector</div>
     <h1>Hand<span>former</span> Adder</h1>
     <p class="subtitle">A minimal transformer that adds two-digit numbers. Watch every matrix, attention weight, and activation in real time.</p>
+    <div class="header-links">
+      <a class="header-link" href="#" title="coming soon"><span class="link-label">blog</span>read the writeup &rarr;</a>
+      <a class="header-link" href="#" title="coming soon"><span class="link-label">video</span>watch the walkthrough &rarr;</a>
+      <a class="header-link" href="#" title="coming soon"><span class="link-label">site</span>aritro shome &rarr;</a>
+    </div>
   </header>
 
   <!-- Input Panel -->
@@ -760,6 +840,16 @@
       <div class="stage-body" id="body-7"></div>
     </div>
 
+  </div>
+</div>
+
+<div class="shell">
+  <div class="site-footer">
+    <span class="footer-name">built by <strong>aritro shome</strong></span>
+    <div class="footer-socials">
+      <a class="footer-social-link" href="https://x.com/silicognition" target="_blank" rel="noopener">&#120143; &nbsp;x.com/silicognition</a>
+      <a class="footer-social-link" href="mailto:aritro.shome.official@gmail.com">&#9993; &nbsp;aritro.shome.official@gmail.com</a>
+    </div>
   </div>
 </div>
 
