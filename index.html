@@ -7,30 +7,6 @@
 
 <style>
   :root {
-    --bg: #050507;
-    --surface: #0c0c10;
-    --surface2: #13131a;
-    --surface3: #1a1a24;
-    --green: #00cc6a;
-    --green-dim: #009950;
-    --green-pale: #003318;
-    --amber: #ffaa00;
-    --amber-dim: #cc8800;
-    --blue: #4488ff;
-    --blue-dim: #2255cc;
-    --red: #ff4466;
-    --text: #e8e8f0;
-    --text-dim: #7070a0;
-    --text-dimmer: #404060;
-    --border: #1e1e2e;
-    --border-bright: #2e2e4e;
-    --glow-green: 0 0 20px rgba(0,204,106,0.25);
-    --glow-amber: 0 0 20px rgba(255,170,0,0.25);
-    --scanline-opacity: 0.03;
-    --toggle-bg: #1a1a24;
-  }
-
-  [data-theme="light"] {
     --bg: #f4f4f0;
     --surface: #ffffff;
     --surface2: #f0f0ec;
@@ -51,7 +27,6 @@
     --glow-green: 0 0 12px rgba(10,124,62,0.12);
     --glow-amber: 0 0 12px rgba(152,88,0,0.12);
     --scanline-opacity: 0;
-    --toggle-bg: #e0e0e8;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -63,9 +38,9 @@
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: clip;
     transition: background 0.3s, color 0.3s;
   }
 
@@ -100,7 +75,7 @@
   }
 
   .header-tag {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.2em;
     color: var(--green);
     text-transform: uppercase;
@@ -122,7 +97,7 @@
   .subtitle {
     margin-top: 10px;
     color: var(--text-dim);
-    font-size: 12px;
+    font-size: 14px;
     max-width: 600px;
   }
 
@@ -160,7 +135,7 @@
   }
 
   .input-group label {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.15em;
     color: var(--text-dim);
     text-transform: uppercase;
@@ -205,7 +180,7 @@
     border-radius: 8px;
     color: var(--green);
     font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.1em;
     padding: 14px 32px;
@@ -225,7 +200,7 @@
 
   .error-msg {
     color: var(--red);
-    font-size: 11px;
+    font-size: 13px;
     margin-top: 10px;
     display: none;
   }
@@ -257,7 +232,7 @@
   .result-eq .ans  { color: var(--green); }
 
   .result-badge {
-    font-size: 11px;
+    font-size: 13px;
     background: var(--green-pale);
     border: 1px solid var(--green-dim);
     border-radius: 999px;
@@ -294,27 +269,27 @@
   .stage-header:hover { background: var(--surface3); }
 
   .stage-num {
-    width: 28px; height: 28px;
+    width: 30px; height: 30px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     flex-shrink: 0;
   }
 
   .stage-num.green { background: var(--green-pale); color: var(--green); border: 1px solid var(--green-dim); }
-  .stage-num.amber { background: #331a00; color: var(--amber); border: 1px solid var(--amber-dim); }
-  .stage-num.blue  { background: #001133; color: var(--blue); border: 1px solid var(--blue-dim); }
+  .stage-num.amber { background: #fef3e2; color: var(--amber); border: 1px solid var(--amber-dim); }
+  .stage-num.blue  { background: #e8eefb; color: var(--blue); border: 1px solid var(--blue-dim); }
 
   .stage-title {
     font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 700;
     flex: 1;
   }
 
   .stage-desc {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--text-dim);
     flex: 2;
   }
@@ -353,14 +328,14 @@
   }
 
   .token-chip .tok-idx {
-    font-size: 9px;
+    font-size: 11px;
     color: var(--text-dimmer);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   .token-chip .tok-val {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--amber);
     display: block;
@@ -368,7 +343,7 @@
   }
 
   .token-chip .tok-label {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--text-dim);
   }
 
@@ -385,11 +360,12 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 16px;
+    overflow-x: auto;
     transition: background 0.3s, border-color 0.3s;
   }
 
   .matrix-label {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -402,7 +378,7 @@
   .matrix-label .ml-shape { color: var(--text-dimmer); }
 
   .matrix-desc {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--text-dim);
     margin-bottom: 10px;
     line-height: 1.5;
@@ -411,12 +387,12 @@
   table.mat {
     border-collapse: collapse;
     width: 100%;
-    font-size: 11px;
+    font-size: 13px;
   }
 
   table.mat th {
     color: var(--text-dimmer);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.1em;
     padding: 3px 8px;
     text-align: right;
@@ -436,7 +412,7 @@
 
   .row-label {
     color: var(--text-dimmer);
-    font-size: 10px;
+    font-size: 12px;
     text-align: left !important;
     padding-right: 10px !important;
     white-space: nowrap;
@@ -448,7 +424,7 @@
   .attn-section { margin-top: 20px; }
 
   .attn-label {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--text-dim);
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -468,12 +444,12 @@
   .attn-grid { display: grid; gap: 3px; }
 
   .attn-cell {
-    width: 52px; height: 40px;
+    width: 58px; height: 44px;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     cursor: default;
     transition: transform 0.15s;
@@ -483,12 +459,12 @@
   .attn-cell:hover { transform: scale(1.15); z-index: 10; }
 
   .attn-axis {
-    font-size: 9px;
+    font-size: 11px;
     color: var(--text-dimmer);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 52px; height: 40px;
+    width: 58px; height: 44px;
     letter-spacing: 0.05em;
   }
 
@@ -514,20 +490,20 @@
 
   .rr-key {
     color: var(--text-dim);
-    font-size: 11px;
+    font-size: 13px;
     min-width: 140px;
     letter-spacing: 0.05em;
   }
 
   .rr-val {
     color: var(--amber);
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
   }
 
   .rr-note {
     color: var(--text-dimmer);
-    font-size: 10px;
+    font-size: 12px;
     margin-left: auto;
   }
 
@@ -537,7 +513,7 @@
     border-left: 2px solid var(--green-dim);
     border-radius: 0 6px 6px 0;
     padding: 12px 16px;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--text-dim);
     line-height: 1.7;
     margin-top: 12px;
@@ -562,7 +538,7 @@
   }
 
   .embed-token .et-name {
-    font-size: 9px;
+    font-size: 11px;
     color: var(--text-dimmer);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -579,14 +555,14 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .et-dim-label {
     color: var(--text-dimmer);
-    width: 30px;
+    width: 34px;
     text-align: right;
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .et-bar-wrap {
@@ -608,8 +584,8 @@
 
   .et-dim-val {
     color: var(--text);
-    font-size: 9px;
-    min-width: 36px;
+    font-size: 11px;
+    min-width: 40px;
     text-align: right;
   }
 
@@ -645,7 +621,7 @@
 
   .dim-tag {
     display: inline-block;
-    font-size: 9px;
+    font-size: 11px;
     background: var(--surface3);
     border: 1px solid var(--border-bright);
     border-radius: 4px;
@@ -655,50 +631,10 @@
     margin-left: 4px;
   }
 
-  /* ── Theme Toggle ── */
-  .theme-toggle-btn {
-    position: fixed;
-    top: 20px; right: 20px;
-    z-index: 1000;
-    background: var(--toggle-bg);
-    border: 1px solid var(--border-bright);
-    border-radius: 999px;
-    padding: 7px 14px;
-    cursor: pointer;
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 11px;
-    color: var(--text-dim);
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    transition: all 0.2s;
-    letter-spacing: 0.05em;
-  }
-  .theme-toggle-btn:hover {
-    border-color: var(--green);
-    color: var(--green);
-  }
-  .toggle-track {
-    width: 32px; height: 17px;
-    background: var(--surface2);
-    border: 1px solid var(--border-bright);
-    border-radius: 999px;
-    position: relative;
-    transition: background 0.3s;
-  }
-  .toggle-thumb {
-    position: absolute;
-    top: 2px; left: 2px;
-    width: 11px; height: 11px;
-    border-radius: 50%;
-    background: var(--green);
-    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1);
-  }
-  [data-theme="light"] .toggle-thumb { transform: translateX(15px); }
+
 </style>
 </head>
 <body>
-<button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn"><span id="themeIcon">🌙</span><div class="toggle-track"><div class="toggle-thumb"></div></div><span id="themeLabel">dark</span></button>
 <div class="shell">
 
   <!-- Header -->
@@ -929,38 +865,19 @@ function fmt(v) { return v.toFixed(3); }
 
 function heatColor(v, min, max) {
   if (max === min) return 'color:var(--text)';
-  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   if (v === 0) return 'color:var(--text-dimmer)';
   if (v < 0) {
-    // red spectrum — dark enough for both themes
     const s = Math.min(1, Math.abs(v) / Math.max(Math.abs(min), 0.001));
-    if (isLight) {
-      const r = Math.round(180 + 55*s);
-      const g = Math.round(40  - 30*s);
-      const b = Math.round(60  - 40*s);
-      return `color: rgb(${r},${g},${b})`;
-    } else {
-      const r = Math.round(200 + 55*s);
-      const g = Math.round(80  - 60*s);
-      const b = Math.round(100 - 70*s);
-      return `color: rgb(${r},${g},${b})`;
-    }
+    const r = Math.round(180 + 55*s);
+    const g = Math.round(40  - 30*s);
+    const b = Math.round(60  - 40*s);
+    return `color: rgb(${r},${g},${b})`;
   }
-  // positive — green spectrum
   const t = Math.min(1, v / Math.max(max, 0.001));
-  if (isLight) {
-    // Dark green on light bg: #0a7c3e → #005020
-    const r = Math.round(30  - 20*t);
-    const g = Math.round(110 + 30*t);
-    const b = Math.round(55  - 30*t);
-    return `color: rgb(${r},${g},${b})`;
-  } else {
-    // Bright green on dark bg
-    const r = Math.round(20  + 40*t);
-    const g = Math.round(160 + 95*t);
-    const b = Math.round(80  + 20*t);
-    return `color: rgb(${r},${g},${b})`;
-  }
+  const r = Math.round(30  - 20*t);
+  const g = Math.round(110 + 30*t);
+  const b = Math.round(55  - 30*t);
+  return `color: rgb(${r},${g},${b})`;
 }
 
 function renderMatrix(M, rowLabels, colLabels, title, desc) {
@@ -997,21 +914,21 @@ function renderAttentionGrid(attn, title) {
   let html = `<div class="attn-section">
     <div class="attn-label">${title} — heatmap (rows = queries, cols = keys)</div>
     <div class="attn-grid-wrap">
-      <div class="attn-grid" style="grid-template-columns: repeat(${cols}, 52px);">`;
+      <div class="attn-grid" style="grid-template-columns: repeat(${cols}, 58px);">`;
 
   // Top-left blank
   html += `<div class="attn-axis"></div>`;
   // Column headers
-  for (let j=0;j<n;j++) html += `<div class="attn-axis" style="font-size:8px;color:var(--text-dimmer)">${TOKEN_LABELS[j]}</div>`;
+  for (let j=0;j<n;j++) html += `<div class="attn-axis" style="font-size:11px;color:var(--text-dimmer)">${TOKEN_LABELS[j]}</div>`;
 
   for (let i=0;i<n;i++) {
     // Row header
-    html += `<div class="attn-axis" style="font-size:8px;color:var(--text-dimmer);justify-content:flex-end;padding-right:6px">${TOKEN_LABELS[i]}</div>`;
+    html += `<div class="attn-axis" style="font-size:11px;color:var(--text-dimmer);justify-content:flex-end;padding-right:6px">${TOKEN_LABELS[i]}</div>`;
     for (let j=0;j<n;j++) {
       const v = attn[i][j];
       const alpha = Math.round(v * 255);
-      const bg = `rgba(255,170,0,${v.toFixed(3)})`;
-      const textColor = v > 0.5 ? '#000' : 'var(--amber)';
+      const bg = `rgba(152,88,0,${v.toFixed(3)})`;
+      const textColor = v > 0.5 ? '#fff' : 'var(--amber)';
       html += `<div class="attn-cell" style="background:${bg};color:${textColor}" title="${TOKEN_LABELS[i]} → ${TOKEN_LABELS[j]}: ${v.toFixed(4)}">${v.toFixed(2)}</div>`;
     }
   }
@@ -1256,27 +1173,7 @@ document.addEventListener('keydown', e => {
 // Run on load with defaults
 window.addEventListener('load', () => run());
 
-// ── Theme Toggle ──
-function toggleTheme() {
-  const html = document.documentElement;
-  const isLight = html.getAttribute('data-theme') === 'light';
-  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
-  document.getElementById('themeIcon').textContent = isLight ? '🌙' : '☀️';
-  document.getElementById('themeLabel').textContent = isLight ? 'dark' : 'light';
-  localStorage.setItem('theme', isLight ? 'dark' : 'light');
-}
-// Apply saved theme
-(function(){
-  const saved = localStorage.getItem('theme') ||
-    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    const icon = document.getElementById('themeIcon');
-    const lbl  = document.getElementById('themeLabel');
-    if (icon) icon.textContent = '☀️';
-    if (lbl)  lbl.textContent  = 'light';
-  }
-})();
+
 </script>
 </body>
 </html>
