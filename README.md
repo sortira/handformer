@@ -1,6 +1,6 @@
-# handformer
+# forgeformer
 
-a minimal, hand-crafted transformer that adds two two-digit numbers — built to be fully inspectable at every internal step.
+a minimal, weights-forged-by-hand transformer that adds two two-digit numbers — built to be fully inspectable at every internal step.
 
 © aritro 'sortira' shome · [twitter](https://x.com/silicognition)
 
@@ -8,7 +8,7 @@ a minimal, hand-crafted transformer that adds two two-digit numbers — built to
 
 ## overview
 
-handformer is a stripped-down transformer implementation designed for mechanistic interpretability. rather than training a model and reverse-engineering its behavior, the weights are constructed analytically — each matrix has a clear, human-understandable role in the computation. the goal is to make the internal mechanics of attention as transparent as possible.
+forgeformer is a stripped-down transformer implementation designed for mechanistic interpretability. rather than training a model and reverse-engineering its behavior, the weights are constructed analytically — each matrix has a clear, human-understandable role in the computation. the goal is to make the internal mechanics of attention as transparent as possible.
 
 the model takes two numbers (each between 1 and 99), tokenizes them into four digit tokens plus an [eos] token, and returns the sum through two sequential attention layers.
 
@@ -85,8 +85,8 @@ the large values (±10) in `dim[2]` of the query/key matrices sharpen the attent
 
 | file | description |
 |---|---|
-| `handformer.ipynb` | core python implementation using numpy; runs the forward pass and exposes all intermediate states |
-| `handformer.html` | self-contained browser demo; runs the model in javascript and visualizes every matrix, attention heatmap, and activation in real time |
+| `forgeformer.ipynb` | core python implementation using numpy; runs the forward pass and exposes all intermediate states |
+| `forgeformer.html` | self-contained browser demo; runs the model in javascript and visualizes every matrix, attention heatmap, and activation in real time |
 
 ---
 
@@ -95,7 +95,7 @@ the large values (±10) in `dim[2]` of the query/key matrices sharpen the attent
 ### python (notebook)
 
 ```python
-ans, states = handformer([3, 7, 4, 6, -1])  # computes 37 + 46
+ans, states = forgeformer([3, 7, 4, 6, -1])  # computes 37 + 46
 print(ans)  # 83
 ```
 
@@ -103,7 +103,7 @@ print(ans)  # 83
 
 ### browser demo
 
-open `handformer.html` in any modern browser. enter two numbers and click **run model** to step through the full forward pass with annotated visualizations of each stage.
+open `forgeformer.html` in any modern browser. enter two numbers and click **run model** to step through the full forward pass with annotated visualizations of each stage.
 
 ---
 
