@@ -8,6 +8,8 @@ try out the demo to look inside the brain of the model [here](https://aritro.is-
 
 read the detailed blog post (docs basically) [here](https://silicognition.is-a.dev/post2.html)
 
+see the explanation video by me [here](https://youtu.be/FnKLQJ5EIZ4)
+
 ---
 
 ## overview
